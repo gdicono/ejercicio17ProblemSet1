@@ -3,12 +3,14 @@ package ucu.edu.aed.utils;
 public class Libro implements Comparable<Libro>{
 
     private String isbn;
+    private String titulo;
     private String autor;
     private double precio;
     private int stock;
 
-    public Libro(String isbn, String autor, double precio, int stock) { // constrcutor
+    public Libro(String isbn, String titulo, String autor, double precio, int stock) { // constrcutor
         this.isbn = isbn;
+        this.titulo = titulo;
         this.autor = autor;
         this.precio = precio;
         this.stock = stock;
@@ -16,6 +18,10 @@ public class Libro implements Comparable<Libro>{
 
     public String getIsbn() {
         return isbn; // obtenemos el isbn
+    }
+
+    public String getTitulo() {
+        return titulo; // obtenemos el titulo del libro
     }
 
     public String getAutor() {
@@ -49,11 +55,9 @@ public class Libro implements Comparable<Libro>{
         return this.autor.compareTo(libro.getAutor());
     }
 
-
-
     @Override
     public String toString() {
-        return (isbn + "," + autor + "," + precio + "," + stock); // retorna String con los atributos algunos modificiados si es que se implementa algunos metodos
+        return (isbn + "," + titulo + "," + autor + "," + precio + "," + stock); // retorna String con los atributos algunos modificiados si es que se implementa algunos metodos
     }
 
 
