@@ -19,7 +19,7 @@ public class Nodo<T> {
     }
 
     public void setSiguiente(Nodo<T> siguiente) { // la funciones de este stter es conectar un nodo con otro
-        this.siguiente = siguiente; //
+        this.siguiente = siguiente;  //
     }
 
     public Comparable getEtiqueta() { // metodo para obenter un valor que nos sirva apra comparar o identificar el nodo
