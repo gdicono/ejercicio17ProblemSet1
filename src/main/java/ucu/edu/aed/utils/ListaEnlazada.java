@@ -9,6 +9,16 @@ public class ListaEnlazada <T> implements TDALista<T> {
     private Nodo<T> primero;
 
     @Override
+    public void agregar(T elem) {
+
+    }
+
+    @Override
+    public void agregar(int index, T elem) {
+
+    }
+
+    @Override
     public T obtener(int index) {
         Nodo<T> actual = primero; //Se arranca del primer nodo de la lista
         int contador = 0;
@@ -25,8 +35,52 @@ public class ListaEnlazada <T> implements TDALista<T> {
             actual = actual.getSiguiente(); //Se avanza al siguiente nodo
             contador++; //Aumenta el contador
         }
-
         return null;
+    }
+
+    @Override
+    public T remover(int index) {
+        return null;
+    }
+
+    @Override
+    public boolean remover(T elem) {
+        return false;
+    }
+
+    @Override
+    public boolean contiene(T elem) {
+        return false;
+    }
+
+    @Override
+    public int indiceDe(T elem) {
+        return 0;
+    }
+
+    @Override
+    public T buscar(Predicate<T> criterio) {
+        return null;
+    }
+
+    @Override
+    public TDALista<T> ordenar(Comparator<T> comparator) {
+        return null;
+    }
+
+    @Override
+    public int tamaño() {
+        return 0;
+    }
+
+    @Override
+    public boolean esVacio() {
+        return false;
+    }
+
+    @Override
+    public void vaciar() {
+
     }
 }
 
