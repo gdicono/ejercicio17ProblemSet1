@@ -1,5 +1,7 @@
 package ucu.edu.aed.utils;
 
+import java.util.Objects;
+
 public class Biblioteca {
 
     private ListaEnlazada<Libro> libros;
@@ -13,12 +15,16 @@ public class Biblioteca {
     }
 
     public void agergarLibroExistente(Libro libro) {
-        if (//poner metodo aca para buscar(libro.getIsbn()) != null) { // si el libro ya existe en la biblioteca
-         //poner metodo aca para buscar(libro.getIsbn()).agregarStock(libro.getStock()); // agregamos el stock del libro existente con el nuevo libro
+        Libro libroExistente = buscarPorIsbn(libro.getIsbn());
+        if (libroExistente != null) {
+            libroExistente.agregarStock(libro.getStock());
+        } else {
+            agregarLibro(libro);
         }
-        else {
-            agregarLibro(//poner metodo aca para buscar); // si el libro no existe lo agregamos normalmente
-        }
+    }
+
+    private Libro buscarPorIsbn(String isbn) {
+        return libros.buscar(libro -> Objects.equals(libro.getIsbn(), isbn));
     }
 
     public ListaEnlazada<Libro> verLibrosDisponibles() {

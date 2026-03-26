@@ -1,41 +1,21 @@
 package ucu.edu.aed.utils;
-import ucu.edu.aed.tda.TDALista;
-import java.util.Comparator;
 import java.util.function.Predicate;
 
-import java.util.Comparator;
-import java.util.function.Predicate;
-
-public class ListaEnlazada <T> implements TDALista<T> {
+public class ListaEnlazada<T> {
     protected Nodo<T> primero;
 
-    @Override
     public void agregar(T elem) {
-        if(primero==null){
+        if (primero == null) {
             primero = new Nodo<>(elem);
-
+        } else {
+            Nodo<T> actual = primero;
+            while (actual.getSiguiente() != null) {
+                actual = actual.getSiguiente();
+            }
+            actual.setSiguiente(new Nodo<>(elem));
+        }
     }
-    @Override
-    public T obtener(int index) {
 
-    }
-    @Override
-    public T remover(int index) {
-
-    }
-    @Override
-    public boolean remover(T elem) {
-
-    }
-    @Override
-    public boolean contiene(T elem) {
-
-    }
-    @Override
-    public int indiceDe(T elem) {
-
-    }
-    @Override
     public T buscar(Predicate<T> criterio) {
         Nodo<T> actual = this.primero;
         while (actual != null && criterio.test(actual.getDato()) == false) {
@@ -47,42 +27,16 @@ public class ListaEnlazada <T> implements TDALista<T> {
         return actual.getDato();
     }
 
-    @Override
-    public TDALista<T> ordenar(Comparator<T> comparator) {
-
-    }
-    @Override
-    public int tamaño() {
-
-    }
-    @Override
-    public boolean esVacio(){
-
-    }
-
-    @Override
-    public void vaciar(){
-        }
-        else {
-            Nodo<T> actual = primero;
-            while (actual.getSiguiente() != null) {
-                actual = actual.getSiguiente();
-            }
-            actual.setSiguiente(new Nodo<>(elem));
-        }
-    }
-
-    @Override
     public void agregar(int index, T elem) {
         Nodo<T> nuevoNodo = new Nodo<>(elem);
-        if(index == 0){ // Si el indice es igual a 0
+        if (index == 0) { // Si el indice es igual a 0
             nuevoNodo.setSiguiente(primero); // Asignamos el siguiente del nuevo nodo al nodo que actualmente es el primero
             primero = nuevoNodo; // Ahora primero es el nuevo nodo
-        }
-        else {
+        } else {
             Nodo<T> actual = primero; // referenciamos para no perder la referencia del nodo
             for (int i = 1; i < index - 1; i++) { // recorremos la lista
-            actual = actual.getSiguiente();} // actual pasa
+                actual = actual.getSiguiente();
+            } // actual pasa
 
             if (actual != null) { // si actual no es nulo
                 nuevoNodo.setSiguiente(actual.getSiguiente()); // el siguiente del nuevoNodo apunta al siguiente del nodo actual
